@@ -1,4 +1,5 @@
 package is.ru.stringcalculator;
+import java.util.ArrayList;
 
 public class Calculator {
 
@@ -16,6 +17,9 @@ public class Calculator {
 			int numb = toInt(text);
 			if(numb > 1000){
 				numb = 0;
+			}
+			else if(numb < 0){
+				throw new RuntimeException("Negatives not allowed: " + numb);
 			}
 			return numb;
 		}
@@ -36,13 +40,23 @@ public class Calculator {
 	
 	private static int sum(String[] numbers){
  	    int total = 0;
+ 	    StringBuilder negativeNumString = new StringBuilder();
         for(String number : numbers){
         	int num = toInt(number);
         	if(num > 1000){
         		num = 0;
         	}
+        	if(num < 0){
+        		if(!negativeNumString.toString().isEmpty()){
+        			negativeNumString.append(",");
+        		}
+        		negativeNumString.append(num);
+        	}
 		    total += num;
 		}
+		if(!negativeNumString.toString().isEmpty()){
+				throw new RuntimeException("Negatives not allowed: " + negativeNumString.toString());
+			}
 		return total;
 	}
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.Rule;
+import org.junit.Assert;
 
 public class CalculatorTest {
 
@@ -86,5 +87,37 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//&\n1&1&1"));
 	}
 	
+	@Test(expected = RuntimeException.class)
+	public void testNegativeException(){
+		Calculator.add("-1");
+	}
 	
+	@Test
+	public void testNegativeExceptionOutput(){
+		RuntimeException exception = null;
+		try {
+			Calculator.add("-1");
+		} catch (RuntimeException e) {
+			exception = e;
+		}
+		Assert.assertNotNull(exception);
+		Assert.assertEquals("Negatives not allowed: -1", exception.getMessage());
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testTwoNegativeException(){
+		Calculator.add("-1,2,-3");
+	}
+	
+	@Test
+	public void testTwoNegativeExceptionOutput(){
+		RuntimeException exception = null;
+		try {
+			Calculator.add("-1,2,-3");
+		} catch (RuntimeException e) {
+			exception = e;
+		}
+		Assert.assertNotNull(exception);
+		Assert.assertEquals("Negatives not allowed: -1,-3", exception.getMessage());
+	}	
 }
