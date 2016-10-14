@@ -7,6 +7,9 @@ public class Calculator {
 			return 0;
 		}
 		else if(text.contains(",")){
+			if(text.contains("\n")){
+				text = text.replace("\n", ",");
+			}
 			return sum(splitNumbers(text));
 		}
 		else
