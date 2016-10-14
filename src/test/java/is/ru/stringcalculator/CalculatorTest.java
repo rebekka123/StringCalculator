@@ -66,4 +66,25 @@ public class CalculatorTest {
 		assertEquals(0, Calculator.add("1005,1001"));
 	}
 	
+	@Test
+	public void testDelimeters() {
+		assertEquals(3, Calculator.add("//#\n1#2"));
+	}
+	
+	@Test
+	public void testBDelimeters() {
+		assertEquals(6, Calculator.add("//;\n1;2;3"));
+	}
+	
+	@Test
+	public void testATwoNumbers() {
+		assertEquals(3, Calculator.add("1,2"));
+	}
+	
+	@Test
+	public void testADelimeters() {
+		assertEquals(3, Calculator.add("//&\n1&1&1"));
+	}
+	
+	
 }
