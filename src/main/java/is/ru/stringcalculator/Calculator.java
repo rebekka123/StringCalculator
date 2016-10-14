@@ -12,8 +12,9 @@ public class Calculator {
 			}
 			return sum(splitNumbers(text));
 		}
-		else
+		else{
 			return toInt(text);
+		}
 	}
 
 	private static int toInt(String number){
@@ -27,7 +28,11 @@ public class Calculator {
 	private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
-		    total += toInt(number);
+        	int num = toInt(number);
+        	if(num > 1000){
+        		num = 0;
+        	}
+		    total += num;
 		}
 		return total;
 	}

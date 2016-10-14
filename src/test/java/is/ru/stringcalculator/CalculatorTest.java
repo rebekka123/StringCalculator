@@ -2,6 +2,8 @@ package is.ru.stringcalculator;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+import org.junit.Rule;
 
 public class CalculatorTest {
 
@@ -49,5 +51,9 @@ public class CalculatorTest {
 		assertEquals(6, Calculator.add("1\n2\n3"));
 	}
 	
+	@Test
+	public void testBigNumbers() {
+		assertEquals(1, Calculator.add("1005\n1"));
+	}
 	
 }
