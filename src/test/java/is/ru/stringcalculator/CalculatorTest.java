@@ -56,4 +56,14 @@ public class CalculatorTest {
 		assertEquals(1, Calculator.add("1005\n1"));
 	}
 	
+	@Test
+	public void testOneBigNum() {
+		assertEquals(0, Calculator.add("1005"));
+	}
+	
+	@Test
+	public void testTwoBigNum() {
+		assertEquals(0, Calculator.add("1005,1001"));
+	}
+	
 }

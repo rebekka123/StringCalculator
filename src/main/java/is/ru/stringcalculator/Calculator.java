@@ -13,7 +13,11 @@ public class Calculator {
 			return sum(splitNumbers(text));
 		}
 		else{
-			return toInt(text);
+			int numb = toInt(text);
+			if(numb > 1000){
+				numb = 0;
+			}
+			return numb;
 		}
 	}
 
